@@ -1,0 +1,73 @@
+// ConsoleApplication6.cpp: определяет точку входа для консольного приложения.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+using namespace std;
+
+//Объявляем структуру
+struct Perevozki{
+	char plane_type[30];
+	int races_amount;
+	float races_hours;
+	float races_km;
+};
+Perevozki init[3] = { 0, 0, 0 };//Массив для инициализации	
+
+//Функция заполнения структуры
+Perevozki struct_input(Perevozki t){ 
+	
+	cout << "Input type: ";
+	gets_s(t.plane_type);
+	cout << "Input amount of races: ";
+	cin >> t.races_amount;
+	cout << "Input hours: ";
+	cin >> t.races_hours;
+	cout << "Input kilomenetrs: ";
+	cin >> t.races_km;
+	
+	return t;
+};
+
+//Функция вывода структуры
+void struct_output(Perevozki t){
+	/*int kol = strlen(t.plane_type);
+	for (int i = 0; i < kol; i++){
+		cout <<t.plane_type[i];
+	}*/
+	printf(t.plane_type);
+	cout << endl;
+	cout <<"Amount of races: "<< t.races_amount<<endl;
+	cout <<"Race hours: "<< t.races_hours<<endl;
+	cout <<"Kilometers of races: "<<t.races_km<<endl;
+};
+
+
+void main(){
+	Perevozki	AN124 = init[3],
+		TU154 = init[3],
+		AirbusBeluga = init[3],
+		Hufhes_H4 = init[3],
+		Ant20 = init[3],
+		AN22 = init[3];
+
+	AN124 = struct_input(AN124);
+	struct_output(AN124);
+	TU154 = struct_input(TU154);
+	AirbusBeluga = struct_input(AirbusBeluga);
+	Hufhes_H4 = struct_input(Hufhes_H4);
+	Ant20 = struct_input(Ant20);
+	AN22 = struct_input(AN22);
+	int i = 0;
+	float hours;
+	cout << "Input hours: " << endl;
+	cin >> hours;
+	Perevozki mas[6] = { AN124, TU154, AirbusBeluga, Hufhes_H4, Ant20, AN22 };
+	for (i = 0; i < 6; i++){
+		if (mas[i].races_hours >hours)
+			cout << mas[i].races_hours<<endl;
+	}
+	system("pause");
+}
